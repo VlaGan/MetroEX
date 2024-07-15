@@ -54,6 +54,8 @@ namespace MetroEX {
     private: System::Windows::Forms::Label^  label2;
     private: System::Windows::Forms::CheckBox^  chkMdlSaveSurfaceTextures;
     private: System::Windows::Forms::CheckBox^  chkMdlExportLods;
+    private: System::Windows::Forms::CheckBox^ chkMdlExportSelectedAnims;
+
 
 
     protected:
@@ -79,6 +81,8 @@ namespace MetroEX {
             this->radioSndAsWAV = (gcnew System::Windows::Forms::RadioButton());
             this->radioSndAsOGG = (gcnew System::Windows::Forms::RadioButton());
             this->groupBox2 = (gcnew System::Windows::Forms::GroupBox());
+            this->chkMdlExportSelectedAnims = (gcnew System::Windows::Forms::CheckBox());
+            this->chkMdlExportLods = (gcnew System::Windows::Forms::CheckBox());
             this->chkMdlSaveSurfaceTextures = (gcnew System::Windows::Forms::CheckBox());
             this->chkMdlExcludeCollision = (gcnew System::Windows::Forms::CheckBox());
             this->chkMdlSaveWithTextures = (gcnew System::Windows::Forms::CheckBox());
@@ -96,7 +100,6 @@ namespace MetroEX {
             this->btnOK = (gcnew System::Windows::Forms::Button());
             this->label1 = (gcnew System::Windows::Forms::Label());
             this->btnCancel = (gcnew System::Windows::Forms::Button());
-            this->chkMdlExportLods = (gcnew System::Windows::Forms::CheckBox());
             this->tableLayoutPanel1->SuspendLayout();
             this->tabControl1->SuspendLayout();
             this->tabPageExport->SuspendLayout();
@@ -119,8 +122,8 @@ namespace MetroEX {
             this->tableLayoutPanel1->Name = L"tableLayoutPanel1";
             this->tableLayoutPanel1->RowCount = 2;
             this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Percent, 100)));
-            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 25)));
-            this->tableLayoutPanel1->Size = System::Drawing::Size(494, 413);
+            this->tableLayoutPanel1->RowStyles->Add((gcnew System::Windows::Forms::RowStyle(System::Windows::Forms::SizeType::Absolute, 31)));
+            this->tableLayoutPanel1->Size = System::Drawing::Size(659, 571);
             this->tableLayoutPanel1->TabIndex = 0;
             // 
             // tabControl1
@@ -131,7 +134,7 @@ namespace MetroEX {
             this->tabControl1->Margin = System::Windows::Forms::Padding(0);
             this->tabControl1->Name = L"tabControl1";
             this->tabControl1->SelectedIndex = 0;
-            this->tabControl1->Size = System::Drawing::Size(494, 388);
+            this->tabControl1->Size = System::Drawing::Size(659, 540);
             this->tabControl1->TabIndex = 1;
             // 
             // tabPageExport
@@ -140,10 +143,11 @@ namespace MetroEX {
             this->tabPageExport->Controls->Add(this->groupBox3);
             this->tabPageExport->Controls->Add(this->groupBox2);
             this->tabPageExport->Controls->Add(this->groupBox1);
-            this->tabPageExport->Location = System::Drawing::Point(4, 22);
+            this->tabPageExport->Location = System::Drawing::Point(4, 25);
+            this->tabPageExport->Margin = System::Windows::Forms::Padding(4);
             this->tabPageExport->Name = L"tabPageExport";
-            this->tabPageExport->Padding = System::Windows::Forms::Padding(3);
-            this->tabPageExport->Size = System::Drawing::Size(486, 362);
+            this->tabPageExport->Padding = System::Windows::Forms::Padding(4);
+            this->tabPageExport->Size = System::Drawing::Size(651, 511);
             this->tabPageExport->TabIndex = 0;
             this->tabPageExport->Text = L"Export options";
             this->tabPageExport->UseVisualStyleBackColor = true;
@@ -151,9 +155,10 @@ namespace MetroEX {
             // chkExportAskEveryTime
             // 
             this->chkExportAskEveryTime->AutoSize = true;
-            this->chkExportAskEveryTime->Location = System::Drawing::Point(15, 336);
+            this->chkExportAskEveryTime->Location = System::Drawing::Point(20, 466);
+            this->chkExportAskEveryTime->Margin = System::Windows::Forms::Padding(4);
             this->chkExportAskEveryTime->Name = L"chkExportAskEveryTime";
-            this->chkExportAskEveryTime->Size = System::Drawing::Size(168, 17);
+            this->chkExportAskEveryTime->Size = System::Drawing::Size(208, 20);
             this->chkExportAskEveryTime->TabIndex = 6;
             this->chkExportAskEveryTime->Text = L"Show this dialog before export";
             this->chkExportAskEveryTime->UseVisualStyleBackColor = true;
@@ -162,9 +167,11 @@ namespace MetroEX {
             // 
             this->groupBox3->Controls->Add(this->radioSndAsWAV);
             this->groupBox3->Controls->Add(this->radioSndAsOGG);
-            this->groupBox3->Location = System::Drawing::Point(8, 256);
+            this->groupBox3->Location = System::Drawing::Point(11, 350);
+            this->groupBox3->Margin = System::Windows::Forms::Padding(4);
             this->groupBox3->Name = L"groupBox3";
-            this->groupBox3->Size = System::Drawing::Size(467, 71);
+            this->groupBox3->Padding = System::Windows::Forms::Padding(4);
+            this->groupBox3->Size = System::Drawing::Size(623, 108);
             this->groupBox3->TabIndex = 5;
             this->groupBox3->TabStop = false;
             this->groupBox3->Text = L"Sounds options:";
@@ -172,9 +179,10 @@ namespace MetroEX {
             // radioSndAsWAV
             // 
             this->radioSndAsWAV->AutoSize = true;
-            this->radioSndAsWAV->Location = System::Drawing::Point(7, 44);
+            this->radioSndAsWAV->Location = System::Drawing::Point(9, 54);
+            this->radioSndAsWAV->Margin = System::Windows::Forms::Padding(4);
             this->radioSndAsWAV->Name = L"radioSndAsWAV";
-            this->radioSndAsWAV->Size = System::Drawing::Size(97, 17);
+            this->radioSndAsWAV->Size = System::Drawing::Size(118, 20);
             this->radioSndAsWAV->TabIndex = 1;
             this->radioSndAsWAV->TabStop = true;
             this->radioSndAsWAV->Text = L"Export as WAV";
@@ -184,9 +192,10 @@ namespace MetroEX {
             // 
             this->radioSndAsOGG->AutoSize = true;
             this->radioSndAsOGG->Checked = true;
-            this->radioSndAsOGG->Location = System::Drawing::Point(7, 20);
+            this->radioSndAsOGG->Location = System::Drawing::Point(9, 25);
+            this->radioSndAsOGG->Margin = System::Windows::Forms::Padding(4);
             this->radioSndAsOGG->Name = L"radioSndAsOGG";
-            this->radioSndAsOGG->Size = System::Drawing::Size(96, 17);
+            this->radioSndAsOGG->Size = System::Drawing::Size(117, 20);
             this->radioSndAsOGG->TabIndex = 0;
             this->radioSndAsOGG->TabStop = true;
             this->radioSndAsOGG->Text = L"Export as OGG";
@@ -194,6 +203,7 @@ namespace MetroEX {
             // 
             // groupBox2
             // 
+            this->groupBox2->Controls->Add(this->chkMdlExportSelectedAnims);
             this->groupBox2->Controls->Add(this->chkMdlExportLods);
             this->groupBox2->Controls->Add(this->chkMdlSaveSurfaceTextures);
             this->groupBox2->Controls->Add(this->chkMdlExcludeCollision);
@@ -203,19 +213,46 @@ namespace MetroEX {
             this->groupBox2->Controls->Add(this->chkMdlExportAnims);
             this->groupBox2->Controls->Add(this->radioMdlAsFBX);
             this->groupBox2->Controls->Add(this->radioMdlAsOBJ);
-            this->groupBox2->Location = System::Drawing::Point(9, 130);
+            this->groupBox2->Location = System::Drawing::Point(12, 160);
+            this->groupBox2->Margin = System::Windows::Forms::Padding(4);
             this->groupBox2->Name = L"groupBox2";
-            this->groupBox2->Size = System::Drawing::Size(467, 120);
+            this->groupBox2->Padding = System::Windows::Forms::Padding(4);
+            this->groupBox2->Size = System::Drawing::Size(623, 182);
             this->groupBox2->TabIndex = 4;
             this->groupBox2->TabStop = false;
             this->groupBox2->Text = L"Models options:";
             // 
+            // chkMdlExportSelectedAnims
+            // 
+            this->chkMdlExportSelectedAnims->AutoSize = true;
+            this->chkMdlExportSelectedAnims->Checked = true;
+            this->chkMdlExportSelectedAnims->CheckState = System::Windows::Forms::CheckState::Checked;
+            this->chkMdlExportSelectedAnims->Location = System::Drawing::Point(9, 112);
+            this->chkMdlExportSelectedAnims->Margin = System::Windows::Forms::Padding(4);
+            this->chkMdlExportSelectedAnims->Name = L"chkMdlExportSelectedAnims";
+            this->chkMdlExportSelectedAnims->Size = System::Drawing::Size(226, 20);
+            this->chkMdlExportSelectedAnims->TabIndex = 9;
+            this->chkMdlExportSelectedAnims->Text = L"Export selected animations (FBX)\r\n";
+            this->chkMdlExportSelectedAnims->UseVisualStyleBackColor = true;
+            // 
+            // chkMdlExportLods
+            // 
+            this->chkMdlExportLods->AutoSize = true;
+            this->chkMdlExportLods->Location = System::Drawing::Point(323, 112);
+            this->chkMdlExportLods->Margin = System::Windows::Forms::Padding(4);
+            this->chkMdlExportLods->Name = L"chkMdlExportLods";
+            this->chkMdlExportLods->Size = System::Drawing::Size(96, 20);
+            this->chkMdlExportLods->TabIndex = 8;
+            this->chkMdlExportLods->Text = L"Export lods";
+            this->chkMdlExportLods->UseVisualStyleBackColor = true;
+            // 
             // chkMdlSaveSurfaceTextures
             // 
             this->chkMdlSaveSurfaceTextures->AutoSize = true;
-            this->chkMdlSaveSurfaceTextures->Location = System::Drawing::Point(242, 68);
+            this->chkMdlSaveSurfaceTextures->Location = System::Drawing::Point(323, 84);
+            this->chkMdlSaveSurfaceTextures->Margin = System::Windows::Forms::Padding(4);
             this->chkMdlSaveSurfaceTextures->Name = L"chkMdlSaveSurfaceTextures";
-            this->chkMdlSaveSurfaceTextures->Size = System::Drawing::Size(142, 17);
+            this->chkMdlSaveSurfaceTextures->Size = System::Drawing::Size(174, 20);
             this->chkMdlSaveSurfaceTextures->TabIndex = 7;
             this->chkMdlSaveSurfaceTextures->Text = L"Save all surface textures";
             this->chkMdlSaveSurfaceTextures->UseVisualStyleBackColor = true;
@@ -223,9 +260,10 @@ namespace MetroEX {
             // chkMdlExcludeCollision
             // 
             this->chkMdlExcludeCollision->AutoSize = true;
-            this->chkMdlExcludeCollision->Location = System::Drawing::Point(242, 44);
+            this->chkMdlExcludeCollision->Location = System::Drawing::Point(323, 54);
+            this->chkMdlExcludeCollision->Margin = System::Windows::Forms::Padding(4);
             this->chkMdlExcludeCollision->Name = L"chkMdlExcludeCollision";
-            this->chkMdlExcludeCollision->Size = System::Drawing::Size(150, 17);
+            this->chkMdlExcludeCollision->Size = System::Drawing::Size(189, 20);
             this->chkMdlExcludeCollision->TabIndex = 6;
             this->chkMdlExcludeCollision->Text = L"Exclude collision geometry";
             this->chkMdlExcludeCollision->UseVisualStyleBackColor = true;
@@ -235,9 +273,10 @@ namespace MetroEX {
             this->chkMdlSaveWithTextures->AutoSize = true;
             this->chkMdlSaveWithTextures->Checked = true;
             this->chkMdlSaveWithTextures->CheckState = System::Windows::Forms::CheckState::Checked;
-            this->chkMdlSaveWithTextures->Location = System::Drawing::Point(242, 20);
+            this->chkMdlSaveWithTextures->Location = System::Drawing::Point(323, 25);
+            this->chkMdlSaveWithTextures->Margin = System::Windows::Forms::Padding(4);
             this->chkMdlSaveWithTextures->Name = L"chkMdlSaveWithTextures";
-            this->chkMdlSaveWithTextures->Size = System::Drawing::Size(113, 17);
+            this->chkMdlSaveWithTextures->Size = System::Drawing::Size(135, 20);
             this->chkMdlSaveWithTextures->TabIndex = 5;
             this->chkMdlSaveWithTextures->Text = L"Save with textures";
             this->chkMdlSaveWithTextures->UseVisualStyleBackColor = true;
@@ -245,17 +284,19 @@ namespace MetroEX {
             // label2
             // 
             this->label2->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
-            this->label2->Location = System::Drawing::Point(233, 9);
+            this->label2->Location = System::Drawing::Point(311, 11);
+            this->label2->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label2->Name = L"label2";
-            this->label2->Size = System::Drawing::Size(2, 106);
+            this->label2->Size = System::Drawing::Size(3, 130);
             this->label2->TabIndex = 4;
             // 
             // chkMdlExportAnimsSeparate
             // 
             this->chkMdlExportAnimsSeparate->AutoSize = true;
-            this->chkMdlExportAnimsSeparate->Location = System::Drawing::Point(7, 92);
+            this->chkMdlExportAnimsSeparate->Location = System::Drawing::Point(9, 140);
+            this->chkMdlExportAnimsSeparate->Margin = System::Windows::Forms::Padding(4);
             this->chkMdlExportAnimsSeparate->Name = L"chkMdlExportAnimsSeparate";
-            this->chkMdlExportAnimsSeparate->Size = System::Drawing::Size(154, 17);
+            this->chkMdlExportAnimsSeparate->Size = System::Drawing::Size(193, 20);
             this->chkMdlExportAnimsSeparate->TabIndex = 3;
             this->chkMdlExportAnimsSeparate->Text = L"Animations to separate files";
             this->chkMdlExportAnimsSeparate->UseVisualStyleBackColor = true;
@@ -265,9 +306,10 @@ namespace MetroEX {
             this->chkMdlExportAnims->AutoSize = true;
             this->chkMdlExportAnims->Checked = true;
             this->chkMdlExportAnims->CheckState = System::Windows::Forms::CheckState::Checked;
-            this->chkMdlExportAnims->Location = System::Drawing::Point(7, 68);
+            this->chkMdlExportAnims->Location = System::Drawing::Point(9, 84);
+            this->chkMdlExportAnims->Margin = System::Windows::Forms::Padding(4);
             this->chkMdlExportAnims->Name = L"chkMdlExportAnims";
-            this->chkMdlExportAnims->Size = System::Drawing::Size(109, 17);
+            this->chkMdlExportAnims->Size = System::Drawing::Size(135, 20);
             this->chkMdlExportAnims->TabIndex = 2;
             this->chkMdlExportAnims->Text = L"Export animations";
             this->chkMdlExportAnims->UseVisualStyleBackColor = true;
@@ -275,9 +317,10 @@ namespace MetroEX {
             // radioMdlAsFBX
             // 
             this->radioMdlAsFBX->AutoSize = true;
-            this->radioMdlAsFBX->Location = System::Drawing::Point(7, 44);
+            this->radioMdlAsFBX->Location = System::Drawing::Point(9, 54);
+            this->radioMdlAsFBX->Margin = System::Windows::Forms::Padding(4);
             this->radioMdlAsFBX->Name = L"radioMdlAsFBX";
-            this->radioMdlAsFBX->Size = System::Drawing::Size(92, 17);
+            this->radioMdlAsFBX->Size = System::Drawing::Size(112, 20);
             this->radioMdlAsFBX->TabIndex = 1;
             this->radioMdlAsFBX->TabStop = true;
             this->radioMdlAsFBX->Text = L"Export as FBX";
@@ -287,9 +330,10 @@ namespace MetroEX {
             // 
             this->radioMdlAsOBJ->AutoSize = true;
             this->radioMdlAsOBJ->Checked = true;
-            this->radioMdlAsOBJ->Location = System::Drawing::Point(7, 20);
+            this->radioMdlAsOBJ->Location = System::Drawing::Point(9, 25);
+            this->radioMdlAsOBJ->Margin = System::Windows::Forms::Padding(4);
             this->radioMdlAsOBJ->Name = L"radioMdlAsOBJ";
-            this->radioMdlAsOBJ->Size = System::Drawing::Size(92, 17);
+            this->radioMdlAsOBJ->Size = System::Drawing::Size(113, 20);
             this->radioMdlAsOBJ->TabIndex = 0;
             this->radioMdlAsOBJ->TabStop = true;
             this->radioMdlAsOBJ->Text = L"Export as OBJ";
@@ -301,9 +345,11 @@ namespace MetroEX {
             this->groupBox1->Controls->Add(this->radioTexAsTGA);
             this->groupBox1->Controls->Add(this->radioTexAsLegacyDDS);
             this->groupBox1->Controls->Add(this->radioTexAsDDS);
-            this->groupBox1->Location = System::Drawing::Point(8, 6);
+            this->groupBox1->Location = System::Drawing::Point(11, 7);
+            this->groupBox1->Margin = System::Windows::Forms::Padding(4);
             this->groupBox1->Name = L"groupBox1";
-            this->groupBox1->Size = System::Drawing::Size(468, 117);
+            this->groupBox1->Padding = System::Windows::Forms::Padding(4);
+            this->groupBox1->Size = System::Drawing::Size(624, 144);
             this->groupBox1->TabIndex = 3;
             this->groupBox1->TabStop = false;
             this->groupBox1->Text = L"Textures options:";
@@ -311,9 +357,10 @@ namespace MetroEX {
             // radioTexAsPNG
             // 
             this->radioTexAsPNG->AutoSize = true;
-            this->radioTexAsPNG->Location = System::Drawing::Point(7, 92);
+            this->radioTexAsPNG->Location = System::Drawing::Point(9, 113);
+            this->radioTexAsPNG->Margin = System::Windows::Forms::Padding(4);
             this->radioTexAsPNG->Name = L"radioTexAsPNG";
-            this->radioTexAsPNG->Size = System::Drawing::Size(95, 17);
+            this->radioTexAsPNG->Size = System::Drawing::Size(116, 20);
             this->radioTexAsPNG->TabIndex = 3;
             this->radioTexAsPNG->Text = L"Export as PNG";
             this->radioTexAsPNG->UseVisualStyleBackColor = true;
@@ -321,9 +368,10 @@ namespace MetroEX {
             // radioTexAsTGA
             // 
             this->radioTexAsTGA->AutoSize = true;
-            this->radioTexAsTGA->Location = System::Drawing::Point(7, 68);
+            this->radioTexAsTGA->Location = System::Drawing::Point(9, 84);
+            this->radioTexAsTGA->Margin = System::Windows::Forms::Padding(4);
             this->radioTexAsTGA->Name = L"radioTexAsTGA";
-            this->radioTexAsTGA->Size = System::Drawing::Size(94, 17);
+            this->radioTexAsTGA->Size = System::Drawing::Size(115, 20);
             this->radioTexAsTGA->TabIndex = 2;
             this->radioTexAsTGA->Text = L"Export as TGA";
             this->radioTexAsTGA->UseVisualStyleBackColor = true;
@@ -331,9 +379,10 @@ namespace MetroEX {
             // radioTexAsLegacyDDS
             // 
             this->radioTexAsLegacyDDS->AutoSize = true;
-            this->radioTexAsLegacyDDS->Location = System::Drawing::Point(7, 44);
+            this->radioTexAsLegacyDDS->Location = System::Drawing::Point(9, 54);
+            this->radioTexAsLegacyDDS->Margin = System::Windows::Forms::Padding(4);
             this->radioTexAsLegacyDDS->Name = L"radioTexAsLegacyDDS";
-            this->radioTexAsLegacyDDS->Size = System::Drawing::Size(129, 17);
+            this->radioTexAsLegacyDDS->Size = System::Drawing::Size(160, 20);
             this->radioTexAsLegacyDDS->TabIndex = 1;
             this->radioTexAsLegacyDDS->Text = L"Export as legacy DDS";
             this->radioTexAsLegacyDDS->UseVisualStyleBackColor = true;
@@ -342,9 +391,10 @@ namespace MetroEX {
             // 
             this->radioTexAsDDS->AutoSize = true;
             this->radioTexAsDDS->Checked = true;
-            this->radioTexAsDDS->Location = System::Drawing::Point(7, 20);
+            this->radioTexAsDDS->Location = System::Drawing::Point(9, 25);
+            this->radioTexAsDDS->Margin = System::Windows::Forms::Padding(4);
             this->radioTexAsDDS->Name = L"radioTexAsDDS";
-            this->radioTexAsDDS->Size = System::Drawing::Size(95, 17);
+            this->radioTexAsDDS->Size = System::Drawing::Size(116, 20);
             this->radioTexAsDDS->TabIndex = 0;
             this->radioTexAsDDS->TabStop = true;
             this->radioTexAsDDS->Text = L"Export as DDS";
@@ -356,19 +406,19 @@ namespace MetroEX {
             this->panel1->Controls->Add(this->label1);
             this->panel1->Controls->Add(this->btnCancel);
             this->panel1->Dock = System::Windows::Forms::DockStyle::Fill;
-            this->panel1->Location = System::Drawing::Point(0, 388);
-            this->panel1->Margin = System::Windows::Forms::Padding(0, 0, 3, 0);
+            this->panel1->Location = System::Drawing::Point(0, 540);
+            this->panel1->Margin = System::Windows::Forms::Padding(0, 0, 4, 0);
             this->panel1->Name = L"panel1";
-            this->panel1->Size = System::Drawing::Size(491, 25);
+            this->panel1->Size = System::Drawing::Size(655, 31);
             this->panel1->TabIndex = 2;
             // 
             // btnOK
             // 
             this->btnOK->Dock = System::Windows::Forms::DockStyle::Right;
-            this->btnOK->Location = System::Drawing::Point(335, 0);
-            this->btnOK->Margin = System::Windows::Forms::Padding(3, 3, 5, 3);
+            this->btnOK->Location = System::Drawing::Point(447, 0);
+            this->btnOK->Margin = System::Windows::Forms::Padding(4, 4, 7, 4);
             this->btnOK->Name = L"btnOK";
-            this->btnOK->Size = System::Drawing::Size(75, 25);
+            this->btnOK->Size = System::Drawing::Size(100, 31);
             this->btnOK->TabIndex = 1;
             this->btnOK->Text = L"OK";
             this->btnOK->UseVisualStyleBackColor = true;
@@ -377,40 +427,33 @@ namespace MetroEX {
             // label1
             // 
             this->label1->Dock = System::Windows::Forms::DockStyle::Right;
-            this->label1->Location = System::Drawing::Point(410, 0);
+            this->label1->Location = System::Drawing::Point(547, 0);
+            this->label1->Margin = System::Windows::Forms::Padding(4, 0, 4, 0);
             this->label1->Name = L"label1";
-            this->label1->Size = System::Drawing::Size(6, 25);
+            this->label1->Size = System::Drawing::Size(8, 31);
             this->label1->TabIndex = 2;
             this->label1->Text = L"label1";
             // 
             // btnCancel
             // 
             this->btnCancel->Dock = System::Windows::Forms::DockStyle::Right;
-            this->btnCancel->Location = System::Drawing::Point(416, 0);
+            this->btnCancel->Location = System::Drawing::Point(555, 0);
+            this->btnCancel->Margin = System::Windows::Forms::Padding(4);
             this->btnCancel->Name = L"btnCancel";
-            this->btnCancel->Size = System::Drawing::Size(75, 25);
+            this->btnCancel->Size = System::Drawing::Size(100, 31);
             this->btnCancel->TabIndex = 0;
             this->btnCancel->Text = L"Cancel";
             this->btnCancel->UseVisualStyleBackColor = true;
             this->btnCancel->Click += gcnew System::EventHandler(this, &DlgSettings::btnCancel_Click);
             // 
-            // chkMdlExportLods
-            // 
-            this->chkMdlExportLods->AutoSize = true;
-            this->chkMdlExportLods->Location = System::Drawing::Point(242, 91);
-            this->chkMdlExportLods->Name = L"chkMdlExportLods";
-            this->chkMdlExportLods->Size = System::Drawing::Size(78, 17);
-            this->chkMdlExportLods->TabIndex = 8;
-            this->chkMdlExportLods->Text = L"Export lods";
-            this->chkMdlExportLods->UseVisualStyleBackColor = true;
-            // 
             // DlgSettings
             // 
-            this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
+            this->AutoScaleDimensions = System::Drawing::SizeF(8, 16);
             this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-            this->ClientSize = System::Drawing::Size(494, 413);
+            this->ClientSize = System::Drawing::Size(659, 571);
             this->Controls->Add(this->tableLayoutPanel1);
             this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
+            this->Margin = System::Windows::Forms::Padding(4);
             this->Name = L"DlgSettings";
             this->StartPosition = System::Windows::Forms::FormStartPosition::CenterParent;
             this->Text = L"MetroEX: Settings";
@@ -435,5 +478,5 @@ namespace MetroEX {
         void DlgSettings_Load(System::Object^ sender, System::EventArgs^ e);
         void btnCancel_Click(System::Object^ sender, System::EventArgs^ e);
         void btnOK_Click(System::Object^ sender, System::EventArgs^ e);
-    };
+};
 }

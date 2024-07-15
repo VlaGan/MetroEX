@@ -10,6 +10,7 @@
 #include "SoundPanel.h"
 #include "LocalizationPanel.h"
 #include "DlgModelInfo.h"
+#include "DlgExportMotions.h"
 
 class MetroConfigsDatabase;
 
@@ -48,6 +49,7 @@ namespace MetroEX {
         bool        mdlSaveAsObj;
         bool        mdlSaveAsFbx;
         bool        mdlSaveWithAnims;
+        bool        mdlSaveSelectedAnims;
         bool        mdlAnimsSeparate;
         bool        mdlSaveWithTextures;
         bool        mdlExcludeCollision;
@@ -125,7 +127,7 @@ namespace MetroEX {
         TreeNode^                           mOriginalRootNode;
 
         MetroConfigsDatabase*               mConfigsDatabase;
-
+        
     protected:
 
     private: System::Windows::Forms::StatusStrip^  statusStrip1;

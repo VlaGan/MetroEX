@@ -13,23 +13,23 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{D6D3A705-0DE5-41EB-BC95-F674D1F795C0}</ProjectGuid>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <Keyword>ManagedCProj</Keyword>
     <RootNamespace>MetroEX</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
-    <PlatformToolset>v141</PlatformToolset>
+    <PlatformToolset>v143</PlatformToolset>
     <CLRSupport>true</CLRSupport>
     <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
@@ -154,6 +154,7 @@
     <ClCompile Include="src\mex_settings.cpp" />
     <ClCompile Include="src\ui\AboutDlg.cpp" />
     <ClCompile Include="src\ui\ChooseFolderDlg.cpp" />
+    <ClCompile Include="src\ui\DlgExportMotions.cpp" />
     <ClCompile Include="src\ui\DlgModelInfo.cpp" />
     <ClCompile Include="src\ui\DlgSettings.cpp" />
     <ClCompile Include="src\ui\ImagePanel.cpp" />
@@ -203,6 +204,9 @@
       <FileType>CppForm</FileType>
     </ClInclude>
     <ClInclude Include="src\ui\ChooseFolderDlg.h" />
+    <ClInclude Include="src\ui\DlgExportMotions.h">
+      <FileType>CppForm</FileType>
+    </ClInclude>
     <ClInclude Include="src\ui\DlgModelInfo.h">
       <FileType>CppForm</FileType>
     </ClInclude>
@@ -236,6 +240,9 @@
     <ClInclude Include="src\ui\UIHelpers.h" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="src\ui\DlgExportMotions.resx">
+      <DependentUpon>src\ui\DlgExportMotions.h</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="src\ui\ImagePanel.resx">
       <DependentUpon>src\ui\ImagePanel.h</DependentUpon>
       <LogicalName Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">MetroEX.ImagePanel.resources</LogicalName>

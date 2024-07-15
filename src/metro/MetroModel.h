@@ -11,6 +11,7 @@ public:
     static const size_t FBX_Export_Skeleton         = 2;
     static const size_t FBX_Export_Animation        = 4;
     static const size_t FBX_Export_ExcludeCollision = 8;
+    static const size_t FBX_Export_Select_Animation = 16;
 
     static const size_t kMetroModelMaxLods          = 2;
 
@@ -40,6 +41,8 @@ public:
 
     const CharString&       GetComment() const;
 
+    void                    SetSelectedExportMotions(MyArray<CharString> sm2exp){ mSelectedExportMotions = sm2exp; };
+
 private:
     void                    ReadSubChunks(MemStream& stream);
     void                    LoadLinkedMeshes(const StringArray& links);
@@ -66,4 +69,7 @@ private:
     // these are temp pointers, invalid after loading
     MetroMesh*              mCurrentMesh;
     size_t                  mThisFileIdx;
+
+    //-- exporting selected motions
+    MyArray<CharString>     mSelectedExportMotions;
 };

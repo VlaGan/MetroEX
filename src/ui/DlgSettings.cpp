@@ -33,6 +33,7 @@ namespace MetroEX {
         }
 
         this->chkMdlExportAnims->Checked = s.extraction.modelSaveWithAnims;
+        this->chkMdlExportSelectedAnims->Checked = s.extraction.modelSaveSelectedAnims;
         this->chkMdlExportAnimsSeparate->Checked = s.extraction.modelAnimsSeparate;
         this->chkMdlSaveWithTextures->Checked = s.extraction.modelSaveWithTextures;
         this->chkMdlExcludeCollision->Checked = s.extraction.modelExcludeCollision;
@@ -79,6 +80,7 @@ namespace MetroEX {
         }
 
         s.extraction.modelSaveWithAnims = this->chkMdlExportAnims->Checked;
+        s.extraction.modelSaveSelectedAnims = this->chkMdlExportSelectedAnims->Checked;
         s.extraction.modelAnimsSeparate = this->chkMdlExportAnimsSeparate->Checked;
         s.extraction.modelSaveWithTextures = this->chkMdlSaveWithTextures->Checked;
         s.extraction.modelExcludeCollision = this->chkMdlExcludeCollision->Checked;

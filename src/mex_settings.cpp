@@ -109,6 +109,7 @@ void MEXSettings::InitDefaults() {
     // models
     this->extraction.modelFormat = Extraction::MdlFormat::Obj;
     this->extraction.modelSaveWithAnims = true;
+    this->extraction.modelSaveSelectedAnims = false;
     this->extraction.modelAnimsSeparate = false;
     this->extraction.modelSaveWithTextures = true;
     this->extraction.modelExcludeCollision = true;
@@ -131,6 +132,7 @@ bool MEXSettings::LoadExtraction(pugi::xml_document& doc) {
         // models
         this->extraction.modelFormat = NameToEnum<Extraction::MdlFormat>(extractionNode.child("modelFormat").text().get(), sMdlFormatNames);
         this->extraction.modelSaveWithAnims = GetBoolValue(extractionNode, "modelSaveWithAnims", true);
+        this->extraction.modelSaveSelectedAnims = GetBoolValue(extractionNode, "modelSaveSelectedAnims", false);
         this->extraction.modelAnimsSeparate = GetBoolValue(extractionNode, "modelAnimsSeparate", false);
         this->extraction.modelSaveWithTextures = GetBoolValue(extractionNode, "modelSaveWithTextures", true);
         this->extraction.modelExcludeCollision = GetBoolValue(extractionNode, "modelExcludeCollision", true);
@@ -159,6 +161,7 @@ bool MEXSettings::SaveExtraction(pugi::xml_document& doc) {
     // models
     extractionNode.append_child("modelFormat").text() = sMdlFormatNames[scast<size_t>(this->extraction.modelFormat)].c_str();
     SetBoolValue(extractionNode, "modelSaveWithAnims", this->extraction.modelSaveWithAnims);
+    SetBoolValue(extractionNode, "modelSaveSelectedAnims", this->extraction.modelSaveSelectedAnims);
     SetBoolValue(extractionNode, "modelAnimsSeparate", this->extraction.modelAnimsSeparate);
     SetBoolValue(extractionNode, "modelSaveWithTextures", this->extraction.modelSaveWithTextures);
     SetBoolValue(extractionNode, "modelExcludeCollision", this->extraction.modelExcludeCollision);

@@ -971,6 +971,7 @@ namespace MetroEX {
         mExtractionCtx->mdlSaveAsObj = (s.extraction.modelFormat == MEXSettings::Extraction::MdlFormat::Obj);
         mExtractionCtx->mdlSaveAsFbx = (s.extraction.modelFormat == MEXSettings::Extraction::MdlFormat::Fbx);
         mExtractionCtx->mdlSaveWithAnims = s.extraction.modelSaveWithAnims;
+        mExtractionCtx->mdlSaveSelectedAnims = s.extraction.modelSaveSelectedAnims;
         mExtractionCtx->mdlAnimsSeparate = s.extraction.modelAnimsSeparate;
         mExtractionCtx->mdlSaveWithTextures = s.extraction.modelSaveWithTextures;
         mExtractionCtx->mdlExcludeCollision = s.extraction.modelExcludeCollision;
@@ -1220,6 +1221,36 @@ namespace MetroEX {
     bool MainForm::ExtractModel(const FileExtractionCtx& ctx, const fs::path& outPath) {
         bool result = false;
 
+        const MEXSettings& settings = MEXSettings::Get();
+
+        //-- Export selected animations with model
+        MyArray<CharString> m_MotionsToExport{};
+        if (settings.extraction.modelSaveWithAnims && settings.extraction.modelSaveSelectedAnims 
+            && ctx.mdlSaveAsFbx && !settings.extraction.modelAnimsSeparate)
+        {
+            DlgExportMotions dlg;
+            dlg.Icon = this->Icon;
+            dlg.SetupModel(mRenderPanel->GetModel());
+
+            auto dlgResult = dlg.ShowDialog(this);
+            if (dlgResult == System::Windows::Forms::DialogResult::Cancel || !dlg.m_miMotionsToExport.Count) {
+                //MetroEX::ShowErrorMessageBox(this, L"DlgExportMotions!\nOperation was cancelled or there are no selected animations!");
+                return true;
+            }
+            else {
+
+                for each (DlgExportMotions::MotionInfo^ mi in dlg.m_miMotionsToExport)
+                    m_MotionsToExport.push_back(NetToCharStr(mi->name));
+
+                if (!m_MotionsToExport.size()) {
+                    MetroEX::ShowErrorMessageBox(this, L"DlgExportMotions!\nOperation was cancelled or there are no selected animations!");
+                    return true;
+                }
+
+                //MetroEX::ShowErrorMessageBox(this, String::Format(L"Num selected motions: {0}", (int)m_MotionsToExport.size()));
+            }
+        }
+
         fs::path resultPath = outPath;
         if (resultPath.empty()) {
             String^ title;
@@ -1248,7 +1279,7 @@ namespace MetroEX {
             }
         }
 
-        const MEXSettings& settings = MEXSettings::Get();
+        //const MEXSettings& settings = MEXSettings::Get();
 
         if (!resultPath.empty()) {
             MemStream& stream = MetroFileSystem::Get().OpenFileStream(ctx.file);
@@ -1275,6 +1306,11 @@ namespace MetroEX {
                         }
                         if (settings.extraction.modelSaveWithAnims && !settings.extraction.modelAnimsSeparate) {
                             fbxOptions |= MetroModel::FBX_Export_Animation;
+                        }
+
+                        if (settings.extraction.modelSaveWithAnims && settings.extraction.modelSaveSelectedAnims && !settings.extraction.modelAnimsSeparate) {
+                            fbxOptions |= MetroModel::FBX_Export_Select_Animation;
+                            mdl.SetSelectedExportMotions(m_MotionsToExport);
                         }
 
                         mdl.SaveAsFBX(resultPath, fbxOptions);

@@ -494,6 +494,7 @@ bool MetroModel::SaveAsFBX(const fs::path& filePath, const size_t options, const
     const bool exportSkeleton = TestBit(options, MetroModel::FBX_Export_Skeleton);
     const bool exportAnimation = TestBit(options, MetroModel::FBX_Export_Animation);
     const bool excludeCollision = TestBit(options, MetroModel::FBX_Export_ExcludeCollision);
+    const bool exportSelectedAnimation = TestBit(options, MetroModel::FBX_Export_Select_Animation);
 
     fs::path modelFolder = filePath.parent_path();
 
@@ -700,9 +701,21 @@ bool MetroModel::SaveAsFBX(const fs::path& filePath, const size_t options, const
             const MetroMotion* motion = this->GetMotion(motionIdx);
             AddAnimTrackToScene(scene, motion, motion->GetName(), boneNodes);
         } else {
-            for (size_t i = 0; i < this->GetNumMotions(); ++i) {
-                const MetroMotion* motion = this->GetMotion(i);
-                AddAnimTrackToScene(scene, motion, motion->GetName(), boneNodes);
+            if (exportSelectedAnimation) {
+                for (size_t i = 0; i < this->GetNumMotions(); ++i) {
+                    const MetroMotion* motion = this->GetMotion(i);
+
+                    for (auto& m_name : mSelectedExportMotions)
+                        if (motion->GetName() == m_name)
+                            AddAnimTrackToScene(scene, motion, motion->GetName(), boneNodes);
+
+                }
+            }
+            else {
+                for (size_t i = 0; i < this->GetNumMotions(); ++i) {
+                    const MetroMotion* motion = this->GetMotion(i);
+                    AddAnimTrackToScene(scene, motion, motion->GetName(), boneNodes);
+                }
             }
         }
     }

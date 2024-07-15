@@ -45,6 +45,7 @@ public:
         // models
         MdlFormat   modelFormat;
         bool        modelSaveWithAnims;
+        bool        modelSaveSelectedAnims;
         bool        modelAnimsSeparate;
         bool        modelSaveWithTextures;
         bool        modelExcludeCollision;
